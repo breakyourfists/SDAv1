@@ -19,7 +19,7 @@ public class Main {
             System.err.println(e);
         }*/
 
-       // Tentativa 1
+        // Tentativa 1
        /* InvertInputStream inv = new InvertInputStream(System.in);
        Scanner scanner = new Scanner(inv);
 
@@ -29,14 +29,24 @@ public class Main {
         inv.close();
         System.out.println("lido "+let);*/
 
-       // Tentativa 2
+        // Tentativa 2
         File file = new File("C://text.txt");
         FileInputStream fis = new FileInputStream(file);
         InvertInputStream inv = new InvertInputStream(fis);
 
-        bytes [] lidos =
+        int filesize = (int)file.length();
+
+        byte [] b = new byte[filesize];
+        inv.read(b, 0, b.length);
+
+
+        for (byte value : b) {
+            System.out.println((char) value);
+        }
+
+
         inv.close();
-        System.out.println("lido "+let);
+
 
     }
 }
