@@ -14,6 +14,20 @@ public class InvertInputStream extends InputStream {
         return input.read();
     }
 
+
+
+    @Override
+    public int read(byte[] b) throws IOException {
+        int ret = input.read(b);
+        byte [] aux = new byte [b.length];
+        int cont = 0;
+        for (int i = b.length - 1; i >= 0; i--) {
+            aux[cont++] = b[i];
+        }
+        System.arraycopy(aux, 0,b,0,b.length);
+        return  ret;
+    }
+
     @Override
     public int read(byte[] b, int off, int len) throws IOException {
         try {

@@ -19,7 +19,10 @@ public class InvertOutputStream extends OutputStream {
         }
     }
 
-    public void write(byte[] data, int offset, int length) {
+    public void write(byte[] data, int offset, int length) throws IOException {
+        for (int i = data.length - 1; i >= offset; i--) {
+            write(data[i]);
+        }
     }
 
     @Override
