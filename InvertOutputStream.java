@@ -13,13 +13,15 @@ public class InvertOutputStream extends OutputStream {
         out.write(i);
     }
 
-    public void write(byte[] data) throws IOException {
+    @Override
+	public void write(byte[] data) throws IOException {
         for (int i = data.length - 1; i >= 0; i--) {
             write(data[i]);
         }
     }
 
-    public void write(byte[] data, int offset, int length) throws IOException {
+    @Override
+	public void write(byte[] data, int offset, int length) throws IOException {
         for (int i = data.length - 1; i >= offset; i--) {
             write(data[i]);
         }

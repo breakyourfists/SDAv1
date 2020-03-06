@@ -1,11 +1,9 @@
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -41,13 +39,15 @@ public class Main {
 //        }
 //        inp.close();
 
+
+        System.out.print("### Teste CipherWriter ###\nRetorno: ");
+    	
         String s = "abrir";
-
-
+        
         OutputStream out = System.out;
         OutputStreamWriter outW = new OutputStreamWriter(out);
         CipherWriter inv = new CipherWriter(outW);
-        System.out.print("### Teste CipherWriter ###\nRetorno: ");
+        
         try {
             inv.write(s);
             inv.flush();
@@ -56,20 +56,20 @@ public class Main {
         }
         
         
-//        System.out.print("### Teste CipherReader ###\nRetorno: ");
-//
-//        File file = new File("C://temp//text.txt");
-//        FileInputStream fis = new FileInputStream(file);
-//        CriptAlphabetInputStream inp = new CriptAlphabetInputStream(fis);
-//
-//        int filesize = (int)file.length();
-//
-//        byte [] b2 = new byte[filesize];
-//        //inp.read(b2, 0, b2.length);
-//        System.out.println("Novo: "+((char)inp.read()));
-//
-//
-//        inp.close();
+        System.out.print("\n### Teste CipherReader ###\nRetorno: ");
+
+        File file = new File("E://temp//text.txt");
         
+        FileInputStream fis = new FileInputStream(file);
+        InputStreamReader inputR = new InputStreamReader(fis);        
+        CipherReader inp = new CipherReader(inputR);
+        
+
+        int byteLido = inp.read();
+        while(byteLido!=-1) {
+        	
+        	System.out.print(((char)byteLido));
+        	byteLido = inp.read();
+        	}          
     }
 }
