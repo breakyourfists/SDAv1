@@ -50,6 +50,17 @@ public class CriptAlphabetInputStream extends InputStream {
 
     @Override
     public int read(byte[] b) throws IOException {
-        return input.read(b);
+        int ret = input.read(b);
+        byte [] aux = new byte [b.length];
+        int cont = 0;
+        char c;
+        for (int i = 0; i > b.length; i++) {
+            c = getNextChar();
+            aux[cont++] = b[i];
+        }
+        System.arraycopy(aux, 0,b,0,b.length);
+        return  ret;
     }
+
+
 }

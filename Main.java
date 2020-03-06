@@ -22,10 +22,10 @@ public class Main {
             System.err.println(e);
         }
 
-
+*/
         System.out.println("\n### Teste Input ###");
 
-        File file = new File("C://text.txt");
+        File file = new File("C://temp//text.txt");
         FileInputStream fis = new FileInputStream(file);
         InvertInputStream inp = new InvertInputStream(fis);
 
@@ -40,7 +40,7 @@ public class Main {
         }
         inp.close();
 
-
+/*
 ////////
         String s = "abrir";
 
@@ -55,7 +55,8 @@ public class Main {
             System.err.println(e);
         }
         */
-        File file = new File("C://text.txt");
+        /*
+        File file = new File("C://temp//text.txt");
         FileInputStream fis = new FileInputStream(file);
         CriptAlphabetInputStream inp = new CriptAlphabetInputStream(fis);
 
@@ -67,5 +68,6 @@ public class Main {
 
 
         inp.close();
+        */
     }
 }
