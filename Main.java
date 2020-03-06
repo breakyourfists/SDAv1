@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,51 +24,52 @@ public class Main {
         }
 
 */
-        System.out.println("\n### Teste Input ###");
+//        System.out.println("\n### Teste Input ###");
+//
+//        File file = new File("C://temp//text.txt");
+//        FileInputStream fis = new FileInputStream(file);
+//        InvertInputStream inp = new InvertInputStream(fis);
+//
+//        int filesize = (int)file.length();
+//
+//        byte [] b2 = new byte[filesize];
+//        //inp.read(b2, 0, b2.length);
+//        inp.read(b2);
+//
+//        for (byte value : b2) {
+//            System.out.print((char) value);
+//        }
+//        inp.close();
 
-        File file = new File("C://temp//text.txt");
-        FileInputStream fis = new FileInputStream(file);
-        InvertInputStream inp = new InvertInputStream(fis);
-
-        int filesize = (int)file.length();
-
-        byte [] b2 = new byte[filesize];
-        //inp.read(b2, 0, b2.length);
-        inp.read(b2);
-
-        for (byte value : b2) {
-            System.out.print((char) value);
-        }
-        inp.close();
-
-/*
-////////
         String s = "abrir";
 
 
         OutputStream out = System.out;
-        CriptAlphaOutputStream inv = new CriptAlphaOutputStream(out);
-        System.out.print("### Teste Output ###\nRetorno: ");
+        OutputStreamWriter outW = new OutputStreamWriter(out);
+        CipherWriter inv = new CipherWriter(outW);
+        System.out.print("### Teste CipherWriter ###\nRetorno: ");
         try {
             inv.write(s);
             inv.flush();
         }catch (IOException e){
             System.err.println(e);
         }
-        */
-        /*
-        File file = new File("C://temp//text.txt");
-        FileInputStream fis = new FileInputStream(file);
-        CriptAlphabetInputStream inp = new CriptAlphabetInputStream(fis);
-
-        int filesize = (int)file.length();
-
-        byte [] b2 = new byte[filesize];
-        //inp.read(b2, 0, b2.length);
-        System.out.println("Novo: "+((char)inp.read()));
-
-
-        inp.close();
-        */
+        
+        
+//        System.out.print("### Teste CipherReader ###\nRetorno: ");
+//
+//        File file = new File("C://temp//text.txt");
+//        FileInputStream fis = new FileInputStream(file);
+//        CriptAlphabetInputStream inp = new CriptAlphabetInputStream(fis);
+//
+//        int filesize = (int)file.length();
+//
+//        byte [] b2 = new byte[filesize];
+//        //inp.read(b2, 0, b2.length);
+//        System.out.println("Novo: "+((char)inp.read()));
+//
+//
+//        inp.close();
+        
     }
 }
