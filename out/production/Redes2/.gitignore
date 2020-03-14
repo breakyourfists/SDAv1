@@ -11,3 +11,5 @@
 /CriptAlphaOutputStreamWriter.class
 /CipherWriter.class
 /CipherReader.class
+/ThreadCompressor.class
+/MainCompressor.class
