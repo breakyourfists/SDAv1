@@ -16,10 +16,11 @@ public class ThreadCompressor extends Thread {
 	ZipOutputStream zos;
 	FileInputStream fis;
 	byte[] bytes;
+	long start, finish, result;
+	
 
 	public ThreadCompressor(File filePath) {
 		this.filePath = filePath;
-		System.out.println(filePath.getParent());
 
 		try {
 			srcFiles = Arrays.asList(filePath.list());			
@@ -37,9 +38,9 @@ public class ThreadCompressor extends Thread {
 	}
 
 	@Override
-	public void run() {
+	public void run() {			
 		if (filePath.isDirectory()) {
-			System.out.println("Diretório");
+			start = System.currentTimeMillis();			
 			try {
 				fos = new FileOutputStream(filePath + "\\" + "multiCompressed.zip");
 				zos = new ZipOutputStream(fos);
@@ -56,8 +57,16 @@ public class ThreadCompressor extends Thread {
 					}
 					fis.close();
 				}
+
+				System.out.println("oooi");
 				zos.close();
 				fos.close();
+				long finish = System.currentTimeMillis();
+				finish = System.currentTimeMillis();
+				result = start - finish;
+				//System.out.println("Tempo "+(result*-1)+" milisegundos");
+				File file = new File(filePath + "\\" + "multiCompressed.zip");
+				file.delete();
 			} catch (FileNotFoundException ex) {
 				System.err.println("A file does not exist: " + ex);
 				ex.printStackTrace();
@@ -67,6 +76,7 @@ public class ThreadCompressor extends Thread {
 			}
 		} else if (filePath.isFile()) {
 			try {
+				start = System.currentTimeMillis();		
 				fos = new FileOutputStream(filePath.getParent()+"\\"+renameZip(filePath));
 				zos = new ZipOutputStream(fos);
 
@@ -82,6 +92,9 @@ public class ThreadCompressor extends Thread {
 				zos.close();
 				fis.close();
 				fos.close();
+				finish = System.currentTimeMillis();
+				result = start - finish;
+				MainCompressor.resultTotal += result;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
