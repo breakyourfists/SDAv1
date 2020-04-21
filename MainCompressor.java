@@ -8,6 +8,7 @@ public class MainCompressor {
 	static long start;
 	static long finish;
 	static long result;
+	static int cont=0;
 	
 	public static void main(String[] args) {
 		File filePath = new File("E://temp");
@@ -25,6 +26,7 @@ public class MainCompressor {
 			for (String srcFile : srcFiles) {
 				System.out.println(srcFile);
 				ts.add(new ThreadCompressor(new File(filePath + "\\" +srcFile)));
+				cont++;
 			}
 			for (ThreadCompressor threadCompressor : ts) {
 				threadCompressor.start();
@@ -33,9 +35,9 @@ public class MainCompressor {
 				Thread.sleep(100);
 			}
 			
-			finish = System.currentTimeMillis();
-			result = start - finish;
-			System.out.println("Resultado "+result * -1);
+			//finish = System.currentTimeMillis();
+			//result = start - finish;
+			//System.out.println("Resultado "+result * -1);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
